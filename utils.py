@@ -1,20 +1,20 @@
+
+
 import os
 import random
 from collections import defaultdict
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 class Constants():
     IMGS_EXTENSION = '.jpg'
     RUTA_IMGS_CAPTCHA = './imagenes/captcha'
     RUTA_IMGS_CARACTERES = './imagenes/corregidos'
-    # RUTA_IMGS_CARACTERES = './imagenes/letras_train'
     ETIQUETAS = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
-    # ETIQUETAS = list('1234567890')
     INDICE_ETIQUETA = dict(
         zip(ETIQUETAS, list(range(len(ETIQUETAS))))
     )
-    # DIMENSIONES = (60, 30, 1)  # alto x ancho x capas
     DIMENSIONES = (30, 20, 1)  # alto x ancho x capas
     REPETIR_SHUFFLE = 100
     PORCENTAJE_ENTRENAMIENTO = 0.7
@@ -26,6 +26,12 @@ constants = Constants()
 
 def get_filename_tag(full_filename):
     return os.path.basename(full_filename)[:4]
+
+
+def get_caracter(nombre_archivo):
+    # caracter = nombre_archivo[-5]
+    return nombre_archivo[0]
+
 
 
 def cargar_data():
@@ -49,9 +55,7 @@ def cargar_data():
 
     for (x, y, lista_imagenes) in ((x_train, y_train, list_file_train), (x_test, y_test, list_file_test)):
         for nombre_archivo in lista_imagenes:
-            caracter = nombre_archivo[0:1]
-            # caracter = nombre_archivo[-5]
-            print('caracter', caracter)
+            caracter = get_caracter(nombre_archivo)
             if caracter not in constants.ETIQUETAS:
                 continue
 

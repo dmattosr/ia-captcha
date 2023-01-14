@@ -13,7 +13,7 @@
 
 ```bash
 
-virtualenv --python=python3.9 venv
+virtualenv --python=python3.6 venv3.6
 source venv/bin/activate
 
 pip install opencv-python
@@ -21,6 +21,7 @@ pip install matplotlib
 pip install tensorflow
 pip install numpy
 pip install scikit-learn
+pip install PyQt5
 
 ```
 
